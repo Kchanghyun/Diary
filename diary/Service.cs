@@ -13,21 +13,21 @@ namespace diary
             mode();
         }
 
+        // write mode, read mode, exit
         void mode()
         {
             Console.WriteLine("모드를 선택해주세요 ( w / r / exit )");
             String? mode = Console.ReadLine();
-            Console.WriteLine("Switch start");
 
             // Console.ReadLine().ToString()을 통해 받은 문자열 앞뒤 공백 및 개행 문자 제거
             switch (mode)
             {
+                //write mode
                 case "w":
-                    Console.WriteLine("w choice");
                     new FileWrite();
                     break;
+                //read mode
                 case "r":
-                    Console.WriteLine("R choice");
                     new FileRead();
                     break;
                 case "exit":

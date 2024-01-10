@@ -41,6 +41,6 @@ using diary;
 class Program {
     static void Main(String[] args)
     {
-        Service service = new();
+        Service srv = new();
     }
 }

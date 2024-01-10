@@ -8,8 +8,8 @@ namespace diary
 {
     internal class Log
     {
-        internal String today = DateTime.Now.ToString("yyyyMMdd");
+        static internal String today = DateTime.Now.ToString("yyyyMMdd");
         //current Time
-        internal String now = DateTime.Now.ToString();
+        static internal String now = DateTime.Now.ToString();
     }
 }

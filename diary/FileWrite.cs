@@ -11,19 +11,16 @@ namespace diary
         bool isRunning = false;
         public FileWrite()
         {
-            try
-            {
-                isRunning = true;
-                Log log = new();
-                Console.WriteLine("일기장에 추가할 내용을 적어주십시오.");
-                //String path = $@"C:\{new Log().today}.txt";
-                String path = $@"C:\Users\Kim Changhyun\OneDrive - gwnu.ac.kr\바탕 화면\Project\diary\daydiary\{log.today}.txt";
-                String text = log.now + "\n\n" + TextWriter() + "\n";
-                File.WriteAllText(path, text);
-            } catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            isRunning = true;
+
+            Console.WriteLine("일기장에 추가할 내용을 적어주십시오.");
+            String path = $@"C:\Users\Kim Changhyun\OneDrive - gwnu.ac.kr\바탕 화면\Project\diary\daydiary\{Log.today}.txt";
+            String text = Log.now + "\n\n" + TextWriter() + "\n";
+            //File.WriteAllText(path, text);
+            //파일이 존재하지 않으면 생성, 존재하면 이어서 쓰기
+            File.AppendAllText(path, text);
+            //mode 선택
+            new Service();
         }
 
         internal String TextWriter()
@@ -36,6 +33,7 @@ namespace diary
             while (isRunning)
             {
                 str.Append(Console.ReadLine() + "\n");
+                //특수문자 !@# 입력 시 종료
                 if(str.ToString().Contains("!@#")) { isRunning = false; }
             }
             return str.ToString();
