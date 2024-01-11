@@ -36,13 +36,13 @@ namespace diary
             StringBuilder tmp = new();
             while(true)
             {
-                tmp.Clear();
                 tmp.Append(Console.ReadLine());
                 if(File.Exists(path + "\\" + tmp.ToString() + ".txt")) 
                 { 
                     return tmp.ToString(); 
                 }
                 Console.WriteLine("존재하지 않는 파일이름입니다.");
+                tmp.Clear();
             }
         }
     }
