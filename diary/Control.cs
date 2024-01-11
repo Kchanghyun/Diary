@@ -10,13 +10,42 @@ namespace diary
     // 방향키는 어떻게 하는거지?
     internal class Control
     {
-        public Control() { }
-        public Control(String[] args)
+        internal Control() { }
+        internal Control(String[] args)
         {
-            // 일단 특수문자 !@# 기준으로 토큰 나누기 성공
-            foreach(String arg in args)
+            Console.WriteLine(args[0]);
+            ControlPage(args);
+        }
+
+        internal void ControlPage(String[] page)
+        {
+            int currentpage = 0;
+            while(true)
             {
-                Console.WriteLine(arg);
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                switch(keyInfo.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        if (currentpage != page.Length - 2)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(page[++currentpage]);
+                        }
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (currentpage != 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(page[--currentpage]);
+                        }
+                        break;
+                    case ConsoleKey.Escape:
+                        new Service();
+                        break;
+                    default:
+                        Console.Error.WriteLine("방향키 및 esc만 입력해주세요");
+                        break;
+                }
             }
         }
     }

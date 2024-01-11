@@ -32,6 +32,7 @@ namespace diary
                     break;
                 case "exit":
                     Console.WriteLine("종료");
+                    System.Environment.Exit(0);
                     break;
                 default: 
                     Console.WriteLine("Invalid choice"); 
