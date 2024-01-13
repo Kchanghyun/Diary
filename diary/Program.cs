@@ -1,8 +1,2 @@
-﻿using diary;
-
-class Program {
-    static void Main(String[] args)
-    {
-        Service srv = new();
-    }
-}
+﻿using Diary;
+DiaryService diaryService = new();

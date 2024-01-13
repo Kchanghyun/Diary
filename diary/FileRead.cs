@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
-namespace diary
+namespace Diary
 {
-    internal class FileRead
+    public class FileRead
     {
         public FileRead()
         {
-            String Directorypath = "C:\\Users\\Kim Changhyun\\OneDrive - gwnu.ac.kr\\바탕 화면\\Project\\diary\\daydiary";
+            string directoryPath = "C:\\Users\\Kim Changhyun\\OneDrive - gwnu.ac.kr\\바탕 화면\\Project\\diary\\daydiary";
             // Directorypath 경로에 있는 파일들 가져오기
-            String[] files = Directory.GetFiles(Directorypath);
+            string[] files = Directory.GetFiles(directoryPath);
             StringBuilder sb = new();
-            foreach (String file in files)
+            foreach (string file in files)
             {
                 //가져온 파일은 경로도 같이 적혀있어 가독성 떨어지므로 파일이름만 저장
                 sb.Append(Path.GetFileName(file) + "\n");
@@ -24,14 +20,14 @@ namespace diary
             Console.WriteLine("어떤 파일을 읽어들일까요? (.txt제외 입력)");
             // filename search method + .txt
 
-            String? txtfile = FileExistsSearch(Directorypath) + ".txt";
-            String tmp = File.ReadAllText(Directorypath + "\\" +  txtfile);
+            string? txtFile = FileExistsSearch(directoryPath) + ".txt";
+            string tmp = File.ReadAllText(directoryPath + "\\" +  txtFile);
             // !@# 특수문자 기준으로 토큰화
-            String[] page = tmp.Split("!@#");
+            string[] page = tmp.Split("!@#");
             new Control(page);
         }
 
-        internal String FileExistsSearch(String path)
+        public string FileExistsSearch(string path)
         {
             StringBuilder tmp = new();
             while(true)
